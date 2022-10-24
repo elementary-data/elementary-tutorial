@@ -14,13 +14,13 @@ macro-paths: [ "macros" ]
 target-path: "target"
 clean-targets:
   - "target"
-  - "dbt_modules"
+  - "dbt_packages"
   - "logs"
 
 require-dbt-version: [ ">=1.0.0", "<2.0.0" ]
 
 models:
-  jaffle_shop:
+  elementary_tutorial:
     materialized: table
     staging:
       materialized: view
