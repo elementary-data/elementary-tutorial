@@ -3,3 +3,8 @@ dbt_modules/
 dbt_packages/
 logs/
 **/.DS_Store
+
+elementary_*.html
+elementary_*.json
+edr.log
+
