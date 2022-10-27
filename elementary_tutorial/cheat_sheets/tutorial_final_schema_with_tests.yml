@@ -92,14 +92,13 @@ models:
     description: This table contains all of the returned orders
     config:
       tags: ["finance"]
-      elementary:
-        timestamp_column: "order_date"
 
     tests:
       - elementary.table_anomalies:
           tags: ["table_anomalies"]
           table_anomalies:
             - row_count
+          freshness_column: order_date
     columns:
       - name: order_id
         description: This is a unique identifier for an order
