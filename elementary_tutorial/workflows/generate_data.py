@@ -43,8 +43,8 @@ def generate_customers_data():
     for customer_id in range(1, CUSTOMERS_COUNT + 1):
         new_customers.append([
             customer_id,  # CUSTOMER ID 
-            all_first_names[random.randint(0, len(all_first_names) - 1)],  # FIRST NAME
-            all_last_names[random.randint(0, len(all_last_names) - 1)]  # LAST NAME
+            random.choice(all_first_names),  # FIRST NAME
+            random.choice(all_last_names)  # LAST NAME
         ])
     write_to_csv(tutorial_customers_data_path, headers, new_customers)
 
@@ -59,8 +59,8 @@ def generate_orders_data():
         new_orders.append([
             order_id,  # ORDER ID
             random.randint(1, CUSTOMERS_COUNT),  # CUSTOMER ID
-            (datetime.now() - timedelta(random.randint(2, TIME_SPAN_IN_DAYS))).strftime("%Y-%m-%d"),  # ORDER DATE
-            all_order_statuses[random.randint(0, len(all_order_statuses) - 1)]  # ORDER STATUS
+            (datetime.now() - timedelta(random.randint(1, TIME_SPAN_IN_DAYS))).strftime("%Y-%m-%d"),  # ORDER DATE
+            random.choice(all_order_statuses)  # ORDER STATUS
         ])
     write_to_csv(tutorial_orders_data_path, headers, new_orders)
 
@@ -80,7 +80,7 @@ def generate_payments_data():
             new_payments.append([
                 payment_id,  # PAYMENT_ID
                 order_id,  # ORDER ID
-                all_payments_methods[random.randint(0, len(all_payments_methods) - 1)],  # PAYMENT METHOD
+                random.choice(all_payments_methods),  # PAYMENT METHOD
                 (payment_amount_in_hundrends + 1 ) * 100  # AMOUNT
             ])
             payment_id += 1
@@ -102,7 +102,7 @@ def generate_signups_data():
     customers_headers, customers_data = split_csv_to_headers_and_data(csv_path=tutorial_customers_data_path)
     orders_headers, orders_data = split_csv_to_headers_and_data(csv_path=tutorial_orders_data_path)
 
-    customer_min_order_time_map = defaultdict(lambda: (datetime.now() - timedelta(random.randint(2, TIME_SPAN_IN_DAYS))).strftime("%Y-%m-%d"))
+    customer_min_order_time_map = defaultdict(lambda: (datetime.now() - timedelta(random.randint(1, TIME_SPAN_IN_DAYS))).strftime("%Y-%m-%d"))
     for order in orders_data:
         customer_min_order_time_map[order[1]] = min(
             datetime.strptime(customer_min_order_time_map[order[1]], "%Y-%m-%d"),
@@ -122,13 +122,14 @@ def generate_signups_data():
 
 
 def generate_customers_anomalies_data():
+    # Generate big amount of new customers to create a row count anomaly
     customers_data_path = get_seed_file_path(PROJECT_DIR, 'customers_training', 'training')
     customers_anomalies_data_path = get_seed_file_path(PROJECT_DIR, 'customers_validation', 'validation')
     headers, customers = split_csv_to_headers_and_data(csv_path=customers_data_path)
     all_first_names = list(set([row[1] for row in customers]))
     all_last_names = list(set([row[2] for row in customers]))
     new_customers = [*customers]
-    for customer_id in range(len(customers) + 1, len(customers) + 201):
+    for customer_id in range(len(customers) + 1, len(customers) + CUSTOMERS_COUNT * 3):
         new_customers.append([
             customer_id,  # CUSTOMER ID 
             random.choice(all_first_names),  # FIRST NAME
@@ -138,15 +139,15 @@ def generate_customers_anomalies_data():
 
 
 def generate_orders_anomalies_data():
+    # Generate big amount of returned orders to create a dimension anomaly 
     orders_data_path = get_seed_file_path(PROJECT_DIR, 'orders_training', 'training')
     orders_anomalies_path = get_seed_file_path(PROJECT_DIR, 'orders_validation', 'validation')
     customers_anomalies_path = get_seed_file_path(PROJECT_DIR, 'customers_validation', 'validation')
     customers_headers, customers_with_anmalies = split_csv_to_headers_and_data(csv_path=customers_anomalies_path)
     orders_headers, orders = split_csv_to_headers_and_data(csv_path=orders_data_path)
     new_orders = [*orders]
-    last_order_date = max([datetime.strptime(row[2], "%Y-%m-%d") for row in orders])
-    validation_orders_date = (last_order_date + timedelta(1)).strftime("%Y-%m-%d")
-    for order_id in range(len(orders) + 1, len(orders) + 5001):
+    validation_orders_date = (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
+    for order_id in range(len(orders) + 1, len(orders) + ORDERS_COUNT * 3):
         new_orders.append([
             order_id,  # ORDER ID
             random.randint(1, len(customers_with_anmalies)),  # CUSTOMER ID
@@ -157,17 +158,19 @@ def generate_orders_anomalies_data():
 
 
 def generate_payments_anomalies_data():
+    # Generate big amount of payments to create a row count anomaly
+    # All new payments have amount of 0 to create a coulumn anomalies of count zero and percent zero
     payments_data_path = get_seed_file_path(PROJECT_DIR, 'payments_training', 'training')
     payments_anomalies_data_path = get_seed_file_path(PROJECT_DIR, 'payments_validation', 'validation')
     payments_headers, payments = split_csv_to_headers_and_data(csv_path=payments_data_path)
     all_payments_methods = list(set([row[2] for row in payments]))
     new_payments = [*payments]
     payment_id = len(payments) + 1
-    for order_id in range(ORDERS_COUNT + 1, ORDERS_COUNT + 5001):
+    for order_id in range(ORDERS_COUNT + 1, ORDERS_COUNT + ORDERS_COUNT * 3):
         new_payments.append([
             payment_id,  # PAYMENT_ID
             order_id,  # ORDER ID
-            all_payments_methods[random.randint(0, len(all_payments_methods) - 1)],  # PAYMENT METHOD
+            random.choice(all_payments_methods),  # PAYMENT METHOD
             0  # AMOUNT
         ])
         payment_id += 1
@@ -175,6 +178,7 @@ def generate_payments_anomalies_data():
 
 
 def generate_signups_anomlies_data():
+    # Generate signups for the new customers generated.
     signups_data_path = get_seed_file_path(PROJECT_DIR, 'signups_training', 'training')
     signups_anomalies_data_path = get_seed_file_path(PROJECT_DIR, 'signups_validation', 'validation')
     customers_anomalies_data_path = get_seed_file_path(PROJECT_DIR, 'customers_validation', 'validation')
@@ -183,7 +187,7 @@ def generate_signups_anomlies_data():
     orders_headers, orders = split_csv_to_headers_and_data(csv_path=orders_anomalies_data_path)
     signups_headers, signups = split_csv_to_headers_and_data(csv_path=signups_data_path)
 
-    customer_min_order_time_map = defaultdict(lambda: (datetime.now() - timedelta(random.randint(1, TIME_SPAN_IN_DAYS))).strftime("%Y-%m-%d"))
+    customer_min_order_time_map = defaultdict(lambda: (datetime.now() - timedelta(1)).strftime("%Y-%m-%d"))
     for order in orders:
         customer_min_order_time_map[order[1]] = min(
             datetime.strptime(customer_min_order_time_map[order[1]], "%Y-%m-%d"),
@@ -199,8 +203,7 @@ def generate_signups_anomlies_data():
             hashlib.sha256(datetime.now().isoformat().encode()).hexdigest(),
             customer_min_order_time_map[customer[0]]
         ])
-    last_signup_date = max([datetime.strptime(row[4], "%Y-%m-%d") for row in signups])
-    validation_signup_date = (last_signup_date + timedelta(1)).strftime("%Y-%m-%d")
+    validation_signup_date = (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
     for i in range(len(customers) + 1, len(customers) + 3):
         new_signups.append([
             i,  # SIGNUP ID

@@ -2,83 +2,28 @@ version: 2
 
 models:
   - name: stg_customers
-    meta:
-      owner: "Idan"
     config:
       tags: ["staging", "PII"]
-    tests:
-      - elementary.all_columns_anomalies:
-          tags: ["all_columns_anomalies"]
     columns:
       - name: customer_id
-        tests:
-          - unique
-          - relationships:
-              to: ref('stg_signups')
-              field: customer_id
 
   - name: stg_orders
-    meta:
-      owner: "Idan"
     config:
       tags: ["staging", "finance"]
-      elementary:
-        timestamp_column: "order_date"
-    tests:
-      - elementary.table_anomalies:
-          tags: ["table_anomalies"]
-          table_anomalies:
-            - row_count
     columns:
       - name: order_id
-        tests:
-          - unique
       - name: status
-        tests:
-          - accepted_values:
-              config:
-                severity: warn
-              values:
-                ["placed", "shipped", "completed", "return_pending", "returned"]
 
   - name: stg_payments
-    meta:
-      owner: "Idan"
     config:
       tags: ["staging", "finance"]
-    tests:
-      - elementary.all_columns_anomalies:
-          tags: ["all_columns_anomalies"]
     columns:
       - name: payment_id
-        tests:
-          - unique
       - name: payment_method
-        tests:
-          - accepted_values:
-              values: ["credit_card", "coupon", "bank_transfer", "gift_card"]
 
   - name: stg_signups
-    meta:
-      owner: "Idan"
     config:
       tags: ["staging", "PII"]
-      elementary:
-        timestamp_column: "signup_date"
-    tests:
-      - elementary.all_columns_anomalies:
-          tags: ["all_columns_anomalies"]
     columns:
       - name: signup_id
-        tests:
-          - unique
       - name: customer_email
-        tests:
-          - unique
-          - elementary.column_anomalies:
-              tags: ["column_anomalies"]
-              sensitivity: 2
-              config:
-                severity: warn
-              column_anomalies:
-                - missing_count
