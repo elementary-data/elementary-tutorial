@@ -1,4 +1,4 @@
-# Elementary Tutorial
+# Elementary Tutorial - WIP
 
 This repository is part of Elementary tutorial for using Elementary's dbt package and Elementary's `edr`.
 
