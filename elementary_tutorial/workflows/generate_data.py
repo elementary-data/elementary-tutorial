@@ -66,15 +66,17 @@ def generate_orders_data():
     all_order_statuses = list(set([row[3] for row in original_orders_data]))
     new_orders = []
     for order_id in range(1, ORDERS_COUNT + 1):
+        # Make sure we got at least 1 order at each day
+        order_datetime = (
+            (datetime.now() - timedelta(random.randint(1, TIME_SPAN_IN_DAYS)))
+            if order_id > TIME_SPAN_IN_DAYS
+            else (datetime.now() - timedelta(random.randint(1, order_id)))
+        )
         new_orders.append(
             [
                 order_id,  # ORDER ID
                 random.randint(1, CUSTOMERS_COUNT),  # CUSTOMER ID
-                (
-                    datetime.now() - timedelta(random.randint(1, TIME_SPAN_IN_DAYS))
-                ).strftime(
-                    "%Y-%m-%d"
-                ),  # ORDER DATE
+                order_datetime.strftime("%Y-%m-%d"),  # ORDER DATE
                 random.choice(all_order_statuses),  # ORDER STATUS
             ]
         )
@@ -186,12 +188,6 @@ def generate_orders_anomalies_data():
     orders_anomalies_path = get_seed_file_path(
         PROJECT_DIR, "orders_validation", "validation"
     )
-    customers_anomalies_path = get_seed_file_path(
-        PROJECT_DIR, "customers_validation", "validation"
-    )
-    customers_headers, customers_with_anmalies = split_csv_to_headers_and_data(
-        csv_path=customers_anomalies_path
-    )
     orders_headers, orders = split_csv_to_headers_and_data(csv_path=orders_data_path)
     new_orders = [*orders]
     validation_orders_date = (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
@@ -199,7 +195,7 @@ def generate_orders_anomalies_data():
         new_orders.append(
             [
                 order_id,  # ORDER ID
-                random.randint(1, len(customers_with_anmalies)),  # CUSTOMER ID
+                random.randint(1, CUSTOMERS_COUNT),  # CUSTOMER ID
                 validation_orders_date,  # ORDER DATE
                 "returned",  # ORDER STATUS
             ]
@@ -244,43 +240,18 @@ def generate_signups_anomlies_data():
     customers_anomalies_data_path = get_seed_file_path(
         PROJECT_DIR, "customers_validation", "validation"
     )
-    orders_anomalies_data_path = get_seed_file_path(
-        PROJECT_DIR, "orders_validation", "validation"
-    )
     customers_headers, customers = split_csv_to_headers_and_data(
         csv_path=customers_anomalies_data_path
     )
-    orders_headers, orders = split_csv_to_headers_and_data(
-        csv_path=orders_anomalies_data_path
-    )
     signups_headers, signups = split_csv_to_headers_and_data(csv_path=signups_data_path)
 
-    customer_min_order_time_map = defaultdict(
-        lambda: (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
-    )
-    for order in orders:
-        customer_min_order_time_map[order[1]] = min(
-            datetime.strptime(customer_min_order_time_map[order[1]], "%Y-%m-%d"),
-            datetime.strptime(order[2], "%Y-%m-%d"),
-        ).strftime("%Y-%m-%d")
-
     new_signups = [*signups]
-    for customer in customers[CUSTOMERS_COUNT + 2 :]:
+    validation_signup_date = (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
+    for customer in customers[CUSTOMERS_COUNT:]:
         new_signups.append(
             [
                 customer[0],  # SIGNUP ID
                 customer[0],  # CUSTOMER ID
-                f"abcd@example.com",  # USER EMAIL
-                hashlib.sha256(datetime.now().isoformat().encode()).hexdigest(),
-                customer_min_order_time_map[customer[0]],
-            ]
-        )
-    validation_signup_date = (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
-    for i in range(len(customers) + 1, len(customers) + 3):
-        new_signups.append(
-            [
-                i,  # SIGNUP ID
-                i,  # CUSTOMER ID
                 f"abcd@example.com",  # USER EMAIL
                 hashlib.sha256(datetime.now().isoformat().encode()).hexdigest(),
                 validation_signup_date,

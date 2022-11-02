@@ -58,7 +58,10 @@ final as (
         customers.last_name,
         customer_orders.first_order,
         customer_orders.most_recent_order,
-        customer_orders.number_of_orders,
+        case
+            when customer_orders.number_of_orders is null then 0
+            else customer_orders.number_of_orders
+        end as number_of_orders,
         customer_payments.total_amount as customer_lifetime_value,
         signups.customer_email,
         {% if elementary.get_config_var('anomalies') %}
