@@ -1,6 +1,8 @@
 name: Format Python code
 on:
   push:
+    paths:
+      - '**.py'
   workflow_dispatch:
 
 jobs:
