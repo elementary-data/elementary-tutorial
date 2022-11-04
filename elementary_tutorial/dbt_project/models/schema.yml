@@ -5,13 +5,6 @@ models:
     description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
     config:
       tags: ["PII"]
-      elementary:
-        timestamp_column: "signup_date"
-    tests:
-      - elementary.table_anomalies:
-          table_anomalies:
-            - row_count
-      - elementary.schema_changes
 
     columns:
       - name: customer_id
@@ -31,14 +24,6 @@ models:
 
       - name: number_of_orders
         description: Count of the number of orders a customer has placed
-        tests:
-          - elementary.column_anomalies:
-              config:
-                severity: warn
-              tags: ["column_anomalies"]
-              column_anomalies:
-                - zero_count
-              timestamp_column: "signup_date"
 
       - name: customer_lifetime_value
         description: Total value (AUD) of a customer's orders
@@ -53,13 +38,7 @@ models:
     description: This table has basic information about orders, as well as some derived facts based on payments
     config:
       tags: ["finance"]
-      elementary:
-        timestamp_column: "order_date"
 
-    tests:
-      - elementary.dimension_anomalies:
-          dimensions:
-            - status
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -92,13 +71,6 @@ models:
     description: This table contains all of the returned orders
     config:
       tags: ["finance"]
-
-    tests:
-      - elementary.table_anomalies:
-          tags: ["table_anomalies"]
-          table_anomalies:
-            - row_count
-          timestamp_column: "order_date"
 
     columns:
       - name: order_id
