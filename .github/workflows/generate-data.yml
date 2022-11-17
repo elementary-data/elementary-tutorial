@@ -24,7 +24,6 @@ jobs:
       - name: Install elementary tutorial repo
         run: |
           pip install -e.
-          elementary-tutorial
 
       - name: Generate data
         run: |
