@@ -10,18 +10,28 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Initial config
         run: |
           git config user.name "GitHub Actions"
           git config user.email noreply@github.com
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.7.5"
+
       - name: Install elementary tutorial repo
         run: |
           pip install -e.
           elementary-tutorial
+
       - name: Generate data
         run: |
           elementary-tutorial generate-tutorial-data
+
       - name: Commit changes
         run: git commit -am "Generated new data for the tutorial"
+
       - name: Push code
         run: git push
