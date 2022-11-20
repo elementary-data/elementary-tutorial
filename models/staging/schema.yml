@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_customers
+    config:
+      tags: ["staging", "PII"]
+    columns:
+      - name: customer_id
+
+  - name: stg_orders
+    config:
+      tags: ["staging", "finance"]
+    columns:
+      - name: order_id
+      - name: status
+
+  - name: stg_payments
+    config:
+      tags: ["staging", "finance"]
+    columns:
+      - name: payment_id
+      - name: payment_method
+
+  - name: stg_signups
+    config:
+      tags: ["staging", "PII"]
+    columns:
+      - name: signup_id
+      - name: customer_email

@@ -35,9 +35,7 @@ def generate_data():
 
 def generate_customers_data():
     original_customers_data_path = os.path.join(ORIGINAL_DATA_PATH, "raw_customers.csv")
-    tutorial_customers_data_path = get_seed_file_path(
-        PROJECT_DIR, "customers_training", "training"
-    )
+    tutorial_customers_data_path = get_seed_file_path("customers_training", "training")
     headers, original_customers_data = split_csv_to_headers_and_data(
         csv_path=original_customers_data_path
     )
@@ -57,9 +55,7 @@ def generate_customers_data():
 
 def generate_orders_data():
     original_orders_data_path = os.path.join(ORIGINAL_DATA_PATH, "raw_orders.csv")
-    tutorial_orders_data_path = get_seed_file_path(
-        PROJECT_DIR, "orders_training", "training"
-    )
+    tutorial_orders_data_path = get_seed_file_path("orders_training", "training")
     headers, original_orders_data = split_csv_to_headers_and_data(
         csv_path=original_orders_data_path
     )
@@ -85,9 +81,7 @@ def generate_orders_data():
 
 def generate_payments_data():
     original_payments_data_path = os.path.join(ORIGINAL_DATA_PATH, "raw_payments.csv")
-    tutorial_payments_data_path = get_seed_file_path(
-        PROJECT_DIR, "payments_training", "training"
-    )
+    tutorial_payments_data_path = get_seed_file_path("payments_training", "training")
     headers, original_payments_data = split_csv_to_headers_and_data(
         csv_path=original_payments_data_path
     )
@@ -115,16 +109,10 @@ def generate_payments_data():
 
 
 def generate_signups_data():
-    tutorial_payments_data_path = get_seed_file_path(
-        PROJECT_DIR, "signups_training", "training"
-    )
+    tutorial_payments_data_path = get_seed_file_path("signups_training", "training")
     headers = ["id", "user_id", "user_email", "hashed_password", "signup_date"]
-    tutorial_customers_data_path = get_seed_file_path(
-        PROJECT_DIR, "customers_training", "training"
-    )
-    tutorial_orders_data_path = get_seed_file_path(
-        PROJECT_DIR, "orders_training", "training"
-    )
+    tutorial_customers_data_path = get_seed_file_path("customers_training", "training")
+    tutorial_orders_data_path = get_seed_file_path("orders_training", "training")
     customers_headers, customers_data = split_csv_to_headers_and_data(
         csv_path=tutorial_customers_data_path
     )
@@ -161,11 +149,9 @@ def generate_signups_data():
 
 def generate_customers_anomalies_data():
     # Generate big amount of new customers to create a row count anomaly
-    customers_data_path = get_seed_file_path(
-        PROJECT_DIR, "customers_training", "training"
-    )
+    customers_data_path = get_seed_file_path("customers_training", "training")
     customers_anomalies_data_path = get_seed_file_path(
-        PROJECT_DIR, "customers_validation", "validation"
+        "customers_validation", "validation"
     )
     headers, customers = split_csv_to_headers_and_data(csv_path=customers_data_path)
     all_first_names = list(set([row[1] for row in customers]))
@@ -184,10 +170,8 @@ def generate_customers_anomalies_data():
 
 def generate_orders_anomalies_data():
     # Generate big amount of returned orders to create a dimension anomaly
-    orders_data_path = get_seed_file_path(PROJECT_DIR, "orders_training", "training")
-    orders_anomalies_path = get_seed_file_path(
-        PROJECT_DIR, "orders_validation", "validation"
-    )
+    orders_data_path = get_seed_file_path("orders_training", "training")
+    orders_anomalies_path = get_seed_file_path("orders_validation", "validation")
     orders_headers, orders = split_csv_to_headers_and_data(csv_path=orders_data_path)
     new_orders = [*orders]
     validation_orders_date = (datetime.now() - timedelta(1)).strftime("%Y-%m-%d")
@@ -206,11 +190,9 @@ def generate_orders_anomalies_data():
 def generate_payments_anomalies_data():
     # Generate big amount of payments to create a row count anomaly
     # All new payments have amount of 0 to create a coulumn anomalies of count zero and percent zero
-    payments_data_path = get_seed_file_path(
-        PROJECT_DIR, "payments_training", "training"
-    )
+    payments_data_path = get_seed_file_path("payments_training", "training")
     payments_anomalies_data_path = get_seed_file_path(
-        PROJECT_DIR, "payments_validation", "validation"
+        "payments_validation", "validation"
     )
     payments_headers, payments = split_csv_to_headers_and_data(
         csv_path=payments_data_path
@@ -233,12 +215,10 @@ def generate_payments_anomalies_data():
 
 def generate_signups_anomlies_data():
     # Generate signups for the new customers generated.
-    signups_data_path = get_seed_file_path(PROJECT_DIR, "signups_training", "training")
-    signups_anomalies_data_path = get_seed_file_path(
-        PROJECT_DIR, "signups_validation", "validation"
-    )
+    signups_data_path = get_seed_file_path("signups_training", "training")
+    signups_anomalies_data_path = get_seed_file_path("signups_validation", "validation")
     customers_anomalies_data_path = get_seed_file_path(
-        PROJECT_DIR, "customers_validation", "validation"
+        "customers_validation", "validation"
     )
     customers_headers, customers = split_csv_to_headers_and_data(
         csv_path=customers_anomalies_data_path
