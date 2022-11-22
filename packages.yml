@@ -1,3 +1,0 @@
-packages:
-  - package: elementary-data/elementary
-    version: [ ">=0.5.3", "<1.0.0" ]

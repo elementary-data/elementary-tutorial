@@ -1,15 +1,15 @@
-name: 'elementary_tutorial'
+name: "elementary_tutorial"
 
 config-version: 2
-version: '1.0.0'
+version: "1.0.0"
 
-profile: 'elementary_tutorial'
+profile: "elementary_tutorial"
 
-model-paths: [ "models" ]
-seed-paths: [ "seeds" ]
-test-paths: [ "tests" ]
-analysis-paths: [ "analysis" ]
-macro-paths: [ "macros" ]
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analysis"]
+macro-paths: ["macros"]
 
 target-path: "target"
 clean-targets:
@@ -17,13 +17,10 @@ clean-targets:
   - "dbt_packages"
   - "logs"
 
-require-dbt-version: [ ">=1.0.0", "<2.0.0" ]
+require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
   elementary_tutorial:
     materialized: table
     staging:
       materialized: view
-
-  elementary:
-    +schema: 'elementary'
