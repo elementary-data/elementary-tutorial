@@ -23,6 +23,8 @@ Monitor your data quality, operation and performance directly from your dbt proj
 
 ## Elementary Tutorial
 
-This repository is part of Elementary tutorial for using Elementary's dbt package and Elementary's `edr`.
+This repository is part of the Elementary Tutorial.
+
+The tutorial walks you through Elementary’s testing features, reporting and the `EDR` tool.
 
 To access the tutorial guide please click [here](https://docs.elementary-data.com/guides/tutorial).
