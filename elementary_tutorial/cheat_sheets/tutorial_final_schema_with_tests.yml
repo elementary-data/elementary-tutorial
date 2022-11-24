@@ -11,7 +11,6 @@ models:
       - elementary.table_anomalies:
           table_anomalies:
             - row_count
-      - elementary.schema_changes
 
     columns:
       - name: customer_id
