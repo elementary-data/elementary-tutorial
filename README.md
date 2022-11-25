@@ -27,4 +27,4 @@ This repository is part of the Elementary Tutorial.
 
 The tutorial walks you through Elementary’s testing features, reporting and the `EDR` tool.
 
-To access the tutorial guide please click [here](https://docs.elementary-data.com/guides/tutorial).
+To access the tutorial guide please click [here](https://docs.elementary-data.com/tutorial/tutorial-start).
