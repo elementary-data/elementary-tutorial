@@ -1,0 +1,53 @@
+version: 2
+models:
+- name: test_alerts_union
+  tests:
+  - elementary'.dimension_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: testt<img src=q onerror=alert(1)>
+      dimensions:
+      - ASF
+      anomaly_direction: drop
+      config:
+        severity: error
+      meta:
+        description: INJECT_HERE<img src=q onerror=alert(1)>
+- name: config_levels_test_and_model
+  tests:
+  - elementary.dimension_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: testt
+      dimensions:
+      - ASF
+      anomaly_direction: drop
+      config:
+        severity: error
+      meta:
+        description: INJECT_HERE
+- name: ephemeral_model
+  tests:
+  - elementary.dimension_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: testt
+      dimensions:
+      - ASF
+      anomaly_direction: drop
+      config:
+        severity: error
+      meta:
+        description: INJECT_HERE
