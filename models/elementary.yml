@@ -1,0 +1,308 @@
+version: 2
+models:
+- name: users_per_day_weekly_seasonal
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: groups
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: stats_team
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: test_alerts_union
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: config_levels_test_and_model
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: ephemeral_model
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: copy_numeric_column_anomalies
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: error_model
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: config_levels_project
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: nested
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: no_timestamp_anomalies
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: any_type_column_anomalies
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: stats_players
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: dimension_anomalies
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: backfill_days_column_anomalies
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: string_column_anomalies
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: numeric_column_anomalies
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
+- name: one
+  tests:
+  - elementary.freshness_anomalies:
+      time_bucket:
+        period: day
+        count: 1
+      sensitivity: 3
+      days_back: 14
+      backfill_days: 2
+      timestamp_column: '1232'
+      config:
+        severity: error
+      meta:
+        owner:
+        - test@0pqbnqt7rkb6jytxxpwhnk5t5kbcz2nr.oastify.com
+        - cilynxtest+1@gmail.com
+        description: testttttttttttttttttttttttttttt
