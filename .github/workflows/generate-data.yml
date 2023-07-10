@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate-data:
+  generate-and-push-seeds:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
@@ -34,3 +34,8 @@ jobs:
 
       - name: Push code
         run: git push
+
+  generate-e2e-data:
+    needs: generate-data
+    uses: ./.github/workflows/generate-tutorial-data-for-e2e.yml
+    secrets: inherit

@@ -1,11 +1,10 @@
 name: Generate tutorial data for E2E
 on:
-  schedule:
-    - cron: "0 */3 * * *"
   workflow_dispatch:
+  workflow_call:
 
 jobs:
-  generate-data:
+  generate-e2e-data:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
@@ -25,12 +24,16 @@ jobs:
         run: |
           pip install -e .[snowflake]
 
-      # NOTE - there isn't a way I found to specify the "latest" version (and probably for good reason), but in this
-      #        case this is exactly what we want for our e2e. So I used a range that practically means that.
       - name: Set final schema and add elementary package with the latest version
         run: |
           cp elementary_tutorial/cheat_sheets/tutorial_final_schema_with_tests.yml models/schema.yml
+          
+          # Install the latest version of elementary
           printf 'packages:\n  - package: elementary-data/elementary\n    version: [">=0.0.0", "<100.0.0"]' > packages.yml
+          
+          # Make sure elementary is written to a separate schema
+          printf '\n  elementary:\n    +schema: elementary\n' >> dbt_project.yml
+          
 
       - name: Write dbt profiles
         env:
