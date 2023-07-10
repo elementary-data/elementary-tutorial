@@ -36,6 +36,6 @@ jobs:
         run: git push
 
   generate-e2e-data:
-    needs: generate-data
+    needs: generate-e2e-data
     uses: ./.github/workflows/generate-tutorial-data-for-e2e.yml
     secrets: inherit
