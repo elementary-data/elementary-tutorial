@@ -36,7 +36,7 @@ jobs:
           
           # Create a dummy failing test so there will be alerts
           mkdir tests
-          printf 'SELECT "epic fail"' > tests/epic_fail.sql
+          printf "SELECT 'epic fail'" > tests/epic_fail.sql
           
 
       - name: Write dbt profiles
@@ -50,6 +50,11 @@ jobs:
         run: |
           dbt deps
 
-      - name: Run dbt build
+      - name: Run dbt models
         run: |
-          dbt build
+          dbt run
+
+      - name: Run dbt tests
+        continue-on-error: true
+        run: |
+          dbt test
