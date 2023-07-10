@@ -37,7 +37,6 @@ jobs:
           # Create a dummy failing test so there will be alerts
           mkdir tests
           printf "SELECT 'epic fail'" > tests/epic_fail.sql
-          
 
       - name: Write dbt profiles
         env:
