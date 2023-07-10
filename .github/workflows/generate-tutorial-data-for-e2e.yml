@@ -34,6 +34,10 @@ jobs:
           # Make sure elementary is written to a separate schema
           printf '\n  elementary:\n    +schema: elementary\n' >> dbt_project.yml
           
+          # Create a dummy failing test so there will be alerts
+          mkdir tests
+          printf 'SELECT "epic fail"' > tests/epic_fail.sql
+          
 
       - name: Write dbt profiles
         env:
