@@ -1,0 +1,48 @@
+name: Generate tutorial data for E2E
+on:
+  schedule:
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+
+jobs:
+  generate-data:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Initial config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email noreply@github.com
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.7.5"
+
+      - name: Install elementary tutorial repo with snowflake extra
+        run: |
+          pip install -e .[snowflake]
+
+      # NOTE - there isn't a way I found to specify the "latest" version (and probably for good reason), but in this
+      #        case this is exactly what we want for our e2e. So I used a range that practically means that.
+      - name: Set final schema and add elementary package with the latest version
+        run: |
+          cp elementary_tutorial/cheat_sheets/tutorial_final_schema_with_tests.yml models/schema.yml
+          printf 'packages:\n  - package: elementary-data/elementary\n    version: [">=0.0.0", "<100.0.0"]' > packages.yml
+
+      - name: Write dbt profiles
+        env:
+          E2E_PROFILES_YML: ${{ secrets.E2E_PROFILES_YML }}
+        run: |
+          mkdir -p ~/.dbt
+          echo "$E2E_PROFILES_YML" > ~/.dbt/profiles.yml
+
+      - name: Install dbt deps
+        run: |
+          dbt deps
+
+      - name: Run dbt build
+        run: |
+          dbt build
