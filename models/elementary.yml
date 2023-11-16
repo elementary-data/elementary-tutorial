@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: dimension_anomalies
+    tests:
+      - elementary.volume_anomalies:
+          time_bucket:
+            period: day
+            count: 1
+          sensitivity: 3
+          days_back: 14
+          backfill_days: 2
+          timestamp_column: updated_at
+          config:
+            severity: error
+          meta:
+            description: Checking for anomalies in the size and growth of a table by comparing the row count of each 1 days period to the last 14 days
