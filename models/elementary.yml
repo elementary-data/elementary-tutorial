@@ -1,0 +1,11 @@
+version: 2
+models:
+  - name: stats_team
+    columns:
+      - name: shots_off_target
+        tests:
+          - not_null:
+              config:
+                severity: error
+              meta:
+                description: The SHOTS_OFF_TARGET column in the stats_team table should not contain null values
