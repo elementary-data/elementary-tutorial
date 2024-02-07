@@ -1,0 +1,11 @@
+version: 2
+models:
+  - name: stats_team
+    columns:
+      - name: penalty_goals
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The PENALTY_GOALS column in the stats_team table should contain only unique values
