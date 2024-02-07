@@ -1,0 +1,9 @@
+version: 2
+models:
+  - name: my_second_dbt_model
+    tests:
+      - elementary.schema_changes:
+          config:
+            severity: error
+          meta:
+            description: Checks for schema changes against an existing baseline
