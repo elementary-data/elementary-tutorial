@@ -1,0 +1,11 @@
+version: 2
+models:
+  - name: stats_team
+    columns:
+      - name: saves_made
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The SAVES_MADE column in the stats_team table should contain only unique values
