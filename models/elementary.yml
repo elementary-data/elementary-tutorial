@@ -1,0 +1,11 @@
+version: 2
+models:
+  - name: one
+    columns:
+      - name: one
+        tests:
+          - unique:
+              config:
+                severity: error
+              meta:
+                description: The ONE column in the one table should contain only unique values
