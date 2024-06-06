@@ -5,6 +5,12 @@ models:
     description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
     config:
       tags: ["PII"]
+      elementary:
+        timestamp_column: "signup_date"
+    tests:
+      - elementary.table_anomalies:
+          table_anomalies:
+            - row_count
 
     columns:
       - name: customer_id
@@ -24,6 +30,16 @@ models:
 
       - name: number_of_orders
         description: Count of the number of orders a customer has placed
+        tests:
+          - not_null
+          - unique
+          - elementary.column_anomalies:
+              config:
+                severity: warn
+              tags: ["column_anomalies"]
+              column_anomalies:
+                - zero_count
+              timestamp_column: "signup_date"
 
       - name: customer_lifetime_value
         description: Total value (AUD) of a customer's orders
@@ -38,7 +54,13 @@ models:
     description: This table has basic information about orders, as well as some derived facts based on payments
     config:
       tags: ["finance"]
+      elementary:
+        timestamp_column: "order_date"
 
+    tests:
+      - elementary.dimension_anomalies:
+          dimensions:
+            - status
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -72,6 +94,13 @@ models:
     config:
       tags: ["finance"]
 
+    tests:
+      - elementary.table_anomalies:
+          tags: ["table_anomalies"]
+          table_anomalies:
+            - row_count
+          timestamp_column: "order_date"
+
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -99,3 +128,39 @@ models:
 
       - name: gift_card_amount
         description: Amount of the order (AUD) paid for by gift card
+
+sources:
+  - name: tcph_sf1
+    database: "SNOWFLAKE_SAMPLE_DATA"
+    schema: "TPCH_SF1"
+    tables:
+      - name: orders
+        columns:
+          - name: o_clerk
+            data_type: TEXT
+          - name: o_custkey
+        freshness: # default freshness
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+
+        loaded_at_field: TO_TIMESTAMP(O_ORDERDATE)
+
+  - name: elementary_models
+    schema: "tutorial_elementary"   # Please replace with the relevant Elementary schema in your project
+    tables:
+      - name: model_run_results
+        columns:
+          - name: execution_time    
+            tests:
+              - elementary.column_anomalies:
+                  name: "pasten pasten pasten"
+                  config:
+                    severity: warn
+                  tags: ["model_performance"]
+                  column_anomalies:
+                    - max
+                  dimensions: ["package_name", "name"]
+                  timestamp_column: generated_at
+                  anomaly_direction: spike
+                  ignore_small_changes:
+                    spike_failure_percent_threshold: 10
