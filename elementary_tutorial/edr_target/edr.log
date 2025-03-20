@@ -1,0 +1,269 @@
+2025-03-19 21:05:45 — INFO — Running with edr=0.17.0
+2025-03-19 21:05:45 — INFO — Installing packages for edr internal dbt package...
+2025-03-19 21:05:45 — INFO — Running dbt command --log-format json deps --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:06:05 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+[31;20m2025-03-19 21:06:09 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2025-03-19 21:06:09 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:06:14 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/data_monitoring/data_monitoring.py", line 140, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        "elementary_cli.get_adapter_type_and_unique_id", quiet=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )[0]
+    ^
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 177, in run_operation
+    result = self._run_command(
+        command_args=command_args,
+    ...<3 lines>...
+        log_output=log_output,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 114, in _run_command
+    result = self._inner_run_command(
+        dbt_command_args,
+    ...<3 lines>...
+        log_format=log_format,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 54, in _inner_run_command
+    raise DbtCommandError(
+    ...<3 lines>...
+    )
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2025-03-19 21:06:14 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+[31;20m2025-03-19 21:06:15 — ERROR — Failed to parse Elementary's database and schema.[0m
+2025-03-19 21:06:15 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+[31;20m2025-03-19 21:06:16 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/report/report.py", line 84, in get_report_data
+    tests_api = TestsAPI(
+        dbt_runner=self.dbt_runner,
+    ...<2 lines>...
+        disable_passed_test_metrics=disable_passed_test_metrics,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/tests/tests.py", line 51, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/tests/tests.py", line 63, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/fetchers/tests/tests.py", line 26, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+        macro_name="elementary_cli.get_test_results",
+    ...<4 lines>...
+        ),
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 177, in run_operation
+    result = self._run_command(
+        command_args=command_args,
+    ...<3 lines>...
+        log_output=log_output,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 114, in _run_command
+    result = self._inner_run_command(
+        dbt_command_args,
+    ...<3 lines>...
+        log_format=log_format,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 54, in _inner_run_command
+    raise DbtCommandError(
+    ...<3 lines>...
+    )
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2025-03-19 21:10:00 — INFO — Running with edr=0.17.0
+2025-03-19 21:10:00 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:10:05 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 270
+[31;20m2025-03-19 21:10:05 — ERROR — Unable to get the latest invocation: list index out of range[0m
+2025-03-19 21:10:05 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:10:06 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 470
+2025-03-19 21:10:06 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:10:07 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 466
+2025-03-19 21:10:07 — INFO — Elementary's database and schema: '"ELEMENTARY_TUTORIAL.ELEMENTARY"'
+2025-03-19 21:10:07 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+[31;20m2025-03-19 21:10:10 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+{"info": {"name": "RunningOperationCaughtError", "code": "Q001", "msg": "Encountered an error while running operation: Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'", "level": "error", "invocationId": "e3306c17-7cef-4d5f-9c4c-76fd190cd23f", "pid": 23399, "thread": "MainThread", "ts": "2025-03-19T19:10:09.043644Z"}, "data": {"exc": "Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'"}}
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/report/report.py", line 84, in get_report_data
+    tests_api = TestsAPI(
+        dbt_runner=self.dbt_runner,
+    ...<2 lines>...
+        disable_passed_test_metrics=disable_passed_test_metrics,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/tests/tests.py", line 51, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/tests/tests.py", line 63, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/fetchers/tests/tests.py", line 26, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+        macro_name="elementary_cli.get_test_results",
+    ...<4 lines>...
+        ),
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 177, in run_operation
+    result = self._run_command(
+        command_args=command_args,
+    ...<3 lines>...
+        log_output=log_output,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 114, in _run_command
+    result = self._inner_run_command(
+        dbt_command_args,
+    ...<3 lines>...
+        log_format=log_format,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 54, in _inner_run_command
+    raise DbtCommandError(
+    ...<3 lines>...
+    )
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+{"info": {"name": "RunningOperationCaughtError", "code": "Q001", "msg": "Encountered an error while running operation: Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'", "level": "error", "invocationId": "e3306c17-7cef-4d5f-9c4c-76fd190cd23f", "pid": 23399, "thread": "MainThread", "ts": "2025-03-19T19:10:09.043644Z"}, "data": {"exc": "Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'"}}
+2025-03-19 21:15:29 — INFO — Running with edr=0.17.0
+2025-03-19 21:15:29 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:15:32 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 270
+[31;20m2025-03-19 21:15:32 — ERROR — Unable to get the latest invocation: list index out of range[0m
+2025-03-19 21:15:32 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:15:33 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 470
+2025-03-19 21:15:33 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-19 21:15:34 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 466
+2025-03-19 21:15:34 — INFO — Elementary's database and schema: '"ELEMENTARY_TUTORIAL.ELEMENTARY"'
+2025-03-19 21:15:34 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+[31;20m2025-03-19 21:15:36 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+{"info": {"name": "RunningOperationCaughtError", "code": "Q001", "msg": "Encountered an error while running operation: Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'", "level": "error", "invocationId": "85436033-2dce-4c94-9ce2-43f4483e2a2c", "pid": 23657, "thread": "MainThread", "ts": "2025-03-19T19:15:35.689421Z"}, "data": {"exc": "Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'"}}
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/report/report.py", line 84, in get_report_data
+    tests_api = TestsAPI(
+        dbt_runner=self.dbt_runner,
+    ...<2 lines>...
+        disable_passed_test_metrics=disable_passed_test_metrics,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/tests/tests.py", line 51, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/api/tests/tests.py", line 63, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        days_back=days_back,
+        ^^^^^^^^^^^^^^^^^^^^
+        invocations_per_test=invocations_per_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        disable_passed_test_metrics=disable_passed_test_metrics,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/fetchers/tests/tests.py", line 26, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+        macro_name="elementary_cli.get_test_results",
+    ...<4 lines>...
+        ),
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 177, in run_operation
+    result = self._run_command(
+        command_args=command_args,
+    ...<3 lines>...
+        log_output=log_output,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 114, in _run_command
+    result = self._inner_run_command(
+        dbt_command_args,
+    ...<3 lines>...
+        log_format=log_format,
+    )
+  File "/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 54, in _inner_run_command
+    raise DbtCommandError(
+    ...<3 lines>...
+    )
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+{"info": {"name": "RunningOperationCaughtError", "code": "Q001", "msg": "Encountered an error while running operation: Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'", "level": "error", "invocationId": "85436033-2dce-4c94-9ce2-43f4483e2a2c", "pid": 23657, "thread": "MainThread", "ts": "2025-03-19T19:15:35.689421Z"}, "data": {"exc": "Database Error\n  000904 (42000): SQL compilation error: error line 67 at position 8\n  invalid identifier 'ELEMENTARY_TEST_RESULTS.INVOCATION_ID'"}}
+2025-03-20 10:33:00 — INFO — Running with edr=0.17.0
+2025-03-20 10:33:00 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:03 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 2608
+2025-03-20 10:33:03 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:04 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 470
+[33;20m2025-03-20 10:33:04 — WARNING — You are using incompatible versions between edr (0.17.0) and Elementary's dbt package (0.18.0).
+ To fix please run:
+pip install --upgrade elementary-data
+[0m
+2025-03-20 10:33:04 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:05 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 466
+2025-03-20 10:33:05 — INFO — Elementary's database and schema: '"ELEMENTARY_TUTORIAL.ELEMENTARY"'
+2025-03-20 10:33:05 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:09 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 142620
+2025-03-20 10:33:09 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_source_freshness_results", "macro_args": {"days_back": 7, "invocations_per_test": 720}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:12 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_source_freshness_results", "macro_args": {"days_back": 7, "invocations_per_test": 720}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 402
+2025-03-20 10:33:12 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_seeds", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:15 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_seeds", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 6446
+2025-03-20 10:33:15 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_snapshots", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:19 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_snapshots", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 402
+2025-03-20 10:33:19 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models", "macro_args": {"exclude_elementary": true}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:24 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models", "macro_args": {"exclude_elementary": true}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 7694
+2025-03-20 10:33:24 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_sources", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:26 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_sources", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 402
+2025-03-20 10:33:26 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_exposures", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:31 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_exposures", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 402
+2025-03-20 10:33:31 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_singular_tests", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:33 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_singular_tests", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 402
+2025-03-20 10:33:33 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models_runs", "macro_args": {"days_back": 7, "exclude_elementary": true}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:35 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models_runs", "macro_args": {"days_back": 7, "exclude_elementary": true}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 14862
+2025-03-20 10:33:35 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_dbt_models_test_coverage", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:37 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_dbt_models_test_coverage", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 1034
+2025-03-20 10:33:37 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_tests", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:40 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_tests", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 8754
+2025-03-20 10:33:40 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_nodes_depends_on_nodes", "macro_args": {"exclude_elementary": true}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:42 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_nodes_depends_on_nodes", "macro_args": {"exclude_elementary": true}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 6096
+2025-03-20 10:33:42 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models_latest_invocation", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:44 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models_latest_invocation", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 8936
+2025-03-20 10:33:44 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_models_latest_invocations_data", "macro_args": {}} --project-dir /Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project
+2025-03-20 10:33:46 — DEBUG — Result bytes size for command '['--log-format', 'json', 'run-operation', 'elementary.log_macro_results', '--args', '{"macro_name": "elementary_cli.get_models_latest_invocations_data", "macro_args": {}}', '--project-dir', '/Users/guyeshdat/Workspace/elementary-tutorial/env/lib/python3.13/site-packages/elementary/monitor/dbt_project']' is 824
