@@ -1,5 +1,19 @@
 version: 2
 
+sources:
+  - name: guy_playground
+    database: guyA
+    schema: guy_playground2
+    tables:
+      - name: players
+        description: This table has basic information about football players
+        columns:
+          - name: age
+          - name: first_name
+          - name: last_name
+          - name: team
+          - name: shirt_number
+
 models:
   - name: customers
     description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
@@ -122,3 +136,45 @@ models:
 
       - name: gift_card_amount
         description: Amount of the order (AUD) paid for by gift card
+
+  - name: family_stats
+    description: This table contains statistics about a family
+    config:
+      tags: ["family"]
+    columns:
+      - name: last_name
+        description: The last name of the family
+      - name: member_count
+        description: The number of members in the family
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              max_value: 3
+              inclusive: true
+      - name: oldest_member
+        description: The age of the oldest member of the family
+
+      - name: youngest_member
+        description: The age of the youngest member of the family
+
+      - name: female_count
+        description: The number of females in the family
+
+      - name: male_count
+        description: The number of males in the family
+
+  - name: teams
+    description: This table contains statistics about a football team
+    columns:
+      - name: team
+        description: The name of the team
+      - name: player_count
+        description: The number of players in the team
+      - name: oldest_player
+        description: The age of the oldest player in the team
+      - name: youngest_player
+        description: The age of the youngest player in the team
+      - name: average_age
+        description: The average age of the players in the team
+      - name: ten_shirt_worn
+        description: Whether the team wears the number 10 shirt

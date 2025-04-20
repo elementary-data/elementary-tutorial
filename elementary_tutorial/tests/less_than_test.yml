@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: your_model_name  # Replace with your actual model name
+    tests:
+      - dbt_utils.less_than:
+          field_name: your_column_name  # Replace with your actual column name
+          compare_value: 100  # Replace with your desired threshold
+          group_by: optional_group_by_column  # Optional: Add if you want to group the test 
