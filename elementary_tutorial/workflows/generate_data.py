@@ -137,9 +137,11 @@ def generate_signups_data():
             [
                 customer[0],  # SIGNUP ID
                 customer[0],  # CUSTOMER ID
-                f"{customer[1]}{customer[2].lower()}{customer[0]}@example.com"
-                if random.randint(0, 30)
-                else "",  # USER EMAIL
+                (
+                    f"{customer[1]}{customer[2].lower()}{customer[0]}@example.com"
+                    if random.randint(0, 30)
+                    else ""
+                ),  # USER EMAIL
                 hashlib.sha256(datetime.now().isoformat().encode()).hexdigest(),
                 customer_min_order_time_map[customer[0]],
             ]
