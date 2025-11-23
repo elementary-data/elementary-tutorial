@@ -249,6 +249,7 @@ models:
     tests:
       - elementary.volume_anomalies:
           name: customer_volume_anomalies_custom_name
+          alias: customer_volume_anomalies_alias_name
     columns:
       - name: customer_id
         description: This is a unique identifier for a customer
