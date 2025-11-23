@@ -337,7 +337,8 @@ models:
           arguments:
             timestamp_column: "order_date"
       - elementary.collect_metrics:
-          timestamp_column: "order_date"
+          arguments:
+            timestamp_column: "order_date"
           metrics:
             - name: average_amount
               type: average
