@@ -258,19 +258,6 @@ models:
 
       - name: last_name
         description: Customer's last name. PII.
-        data_tests:
-          - custom_query_logic:
-              meta:
-                  description: stg_onco_meta_analysis__assay_values_no_missing
-              join_condition: LEFT JOIN (SELECT DISTINCT LOWER(source_value_set_display) AS concept_map_assay
-                                         FROM {{ ref('stg_customers') }}
-                                         WHERE concept_map_name= 'cds-molecular_test_code-tempus-canonical'
-                                         UNION DISTINCT
-                                         SELECT DISTINCT LOWER(target_value_set_display) AS concept_map_assay
-                                         FROM {{ ref('stg_customers') }}
-                                         WHERE concept_map_name= 'cds-molecular_test_code-tempus-canonical') ON concept_map_assay = LOWER(assay)
-              conditional_filter: assay IS NOT NULL AND concept_map_assay IS NULL
-              alias: stg_onco_meta_analysis__assay_values_no_missing
 
       - name: first_order
         description: Date (UTC) of a customer's first order
@@ -285,9 +272,10 @@ models:
               config:
                 severity: warn
               tags: ["column_anomalies"]
-              column_anomalies:
-                - zero_count
-              timestamp_column: "signup_date"
+              arguments:
+                column_anomalies:
+                  - zero_count
+                timestamp_column: "signup_date"
 
       - name: customer_lifetime_value
         description: Total value (AUD) of a customer's orders
@@ -307,8 +295,9 @@ models:
 
     tests:
       - elementary.dimension_anomalies:
-          dimensions:
-            - status
+          arguments:
+            dimensions:
+              - status
     columns:
       - name: order_id
         description: This is a unique identifier for an order
@@ -345,7 +334,8 @@ models:
     tests:
       - elementary.volume_anomalies:
           tags: ["table_anomalies"]
-          timestamp_column: "order_date"
+          arguments:
+            timestamp_column: "order_date"
       - elementary.collect_metrics:
           timestamp_column: "order_date"
           metrics:
@@ -394,8 +384,9 @@ models:
         tests:
           - not_null
           - dbt_utils.accepted_range:
-              max_value: 3
-              inclusive: true
+              arguments:
+                max_value: 3
+                inclusive: true
       - name: oldest_member
         description: The age of the oldest member of the family
 
