@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug dbt",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "dbt.main",
+      "args": ["test", "--models", "my_model"],
+      "cwd": "${workspaceFolder}/dbt-core"
+    }
+  ],
+}
