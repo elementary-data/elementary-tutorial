@@ -1,5 +1,6 @@
 packages:
-  - local: /Users/guyeshdat/Workspace/dbt-data-reliability
   - package: dbt-labs/dbt_utils
     version: 1.2.0
-sha1_hash: 89a0f99e2436e66ada35a95f92a1df152343801c
+  - package: elementary-data/elementary
+    version: 0.20.1
+sha1_hash: ab63097fbccd9add10fa863009b38396f385b979

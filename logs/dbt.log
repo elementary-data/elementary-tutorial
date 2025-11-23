@@ -556,3 +556,39 @@ Update your versions in packages.yml, then run dbt deps
 [0m13:34:25.669321 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109de0bb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b317a00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b445990>]}
 [0m13:34:25.669541 [debug] [MainThread]: An error was encountered while trying to send an event
 [0m13:34:25.669727 [debug] [MainThread]: Flushing usage events
+[0m13:37:56.714845 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103f3cc40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1062de920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1062de1d0>]}
+[0m13:37:56.718036 [debug] [MainThread]: An error was encountered while trying to send an event
+
+
+============================== 13:37:56.718304 | 29a37e8d-6b8b-49d4-919f-75698d1e0e8a ==============================
+[0m13:37:56.718304 [info ] [MainThread]: Running with dbt=1.9.2
+[0m13:37:56.718591 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/guyeshdat/.dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/Users/guyeshdat/Workspace/elementary-tutorial/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt deps', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m13:37:56.862335 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '29a37e8d-6b8b-49d4-919f-75698d1e0e8a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1062dd030>]}
+[0m13:37:56.862617 [debug] [MainThread]: An error was encountered while trying to send an event
+[0m13:37:56.874344 [debug] [MainThread]: Set downloads directory='/var/folders/xg/gvyd4ty9183f97jsg9yk9wnr0000gn/T/dbt-downloads-f_cuxivx'
+[0m13:37:56.874874 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m13:37:57.324625 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m13:37:57.325109 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m13:37:57.428559 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m13:37:57.431761 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/elementary-data/elementary.json
+[0m13:37:57.540279 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/elementary-data/elementary.json 200
+[0m13:37:57.550590 [info ] [MainThread]: Updating lock file in file path: /Users/guyeshdat/Workspace/elementary-tutorial/package-lock.yml
+[0m13:37:57.571812 [debug] [MainThread]: Set downloads directory='/var/folders/xg/gvyd4ty9183f97jsg9yk9wnr0000gn/T/dbt-downloads-2zq1ykfz'
+[0m13:37:57.576637 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m13:37:57.788222 [info ] [MainThread]: Installed from version 1.2.0
+[0m13:37:57.788514 [info ] [MainThread]: Updated version available: 1.3.2
+[0m13:37:57.788706 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '29a37e8d-6b8b-49d4-919f-75698d1e0e8a', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105595e70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1055cdba0>]}
+[0m13:37:57.788850 [debug] [MainThread]: An error was encountered while trying to send an event
+[0m13:37:57.788971 [info ] [MainThread]: Installing elementary-data/elementary
+[0m13:37:58.092312 [info ] [MainThread]: Installed from version 0.20.1
+[0m13:37:58.092598 [info ] [MainThread]: Up to date!
+[0m13:37:58.092787 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '29a37e8d-6b8b-49d4-919f-75698d1e0e8a', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1065f4e80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1065f6c80>]}
+[0m13:37:58.092925 [debug] [MainThread]: An error was encountered while trying to send an event
+[0m13:37:58.093064 [info ] [MainThread]: 
+[0m13:37:58.093221 [info ] [MainThread]: Updates available for packages: ['dbt-labs/dbt_utils']                 
+Update your versions in packages.yml, then run dbt deps
+[0m13:37:58.095101 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 1.4266393, "process_in_blocks": "0", "process_kernel_time": 0.226147, "process_mem_max_rss": "106430464", "process_out_blocks": "0", "process_user_time": 0.798994}
+[0m13:37:58.095413 [debug] [MainThread]: Command `dbt deps` succeeded at 13:37:58.095349 after 1.43 seconds
+[0m13:37:58.095608 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103f3cc40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105594c70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1055cdf90>]}
+[0m13:37:58.095750 [debug] [MainThread]: An error was encountered while trying to send an event
+[0m13:37:58.095871 [debug] [MainThread]: Flushing usage events
