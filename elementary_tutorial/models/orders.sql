@@ -2,7 +2,7 @@
 
 with orders as (
 
-    select * from {{ ref('stg_orders') }}
+    selectt * from {{ ref('stg_orders') }}
 
 ),
 

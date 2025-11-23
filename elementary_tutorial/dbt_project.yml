@@ -5,7 +5,7 @@ name: 'elementary_tutorial'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'athena-integrations'
+profile: 'databricks'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -29,4 +29,3 @@ models:
 
 flags:
   require_explicit_package_overrides_for_builtin_materializations: False
-  source_freshness_run_project_hooks: True   

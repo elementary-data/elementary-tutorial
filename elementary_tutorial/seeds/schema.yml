@@ -1,0 +1,21 @@
+seeds:
+  - name: family_members
+    description: This table contains family members
+    config:
+      tags: ["family"]
+    columns:
+      - name: last_name
+        description: The last name of the family member
+      - name: first_name
+        description: The first name of the family member
+        tests:
+          - not_null
+      - name: age
+        description: The age of the family member
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+      - name: gender
+        description: The gender of the family member
