@@ -1,0 +1,132 @@
+version: 2
+exposures:
+  - name: lookml_dashboards__brand_analytics_web__transactional_thelook__brand_analytics
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: Brand Analytics, Web & Transactional_thelook::brand_analytics
+    url: http://elementarydata.cloud.looker.com/dashboards/thelook::brand_analytics
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: lookml_dashboards__business_pulse_thelook__business_pulse
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: Business Pulse_thelook::business_pulse
+    url: http://elementarydata.cloud.looker.com/dashboards/thelook::business_pulse
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: lookml_dashboards__cohort_data_tool_thelook__cohort_data_tool
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: Cohort Data Tool_thelook::cohort_data_tool
+    url: http://elementarydata.cloud.looker.com/dashboards/thelook::cohort_data_tool
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: lookml_dashboards__customer_lookup_thelook__customer_lookup
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: Customer Lookup_thelook::customer_lookup
+    url: http://elementarydata.cloud.looker.com/dashboards/thelook::customer_lookup
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: lookml_dashboards__joeydashboard_redshift__joeysdashboard
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: JoeyDashboard_redshift::joeysdashboard
+    url: http://elementarydata.cloud.looker.com/dashboards/redshift::joeysdashboard
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: lookml_dashboards__shipping_logistics__operations_thelook__shipping_logistics__operations
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: Shipping Logistics & Operations_thelook::shipping_logistics__operations
+    url: http://elementarydata.cloud.looker.com/dashboards/thelook::shipping_logistics__operations
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: lookml_dashboards__web_analytics_data_tool_thelook__web_analytics_data_tool
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: Web Analytics Data Tool_thelook::web_analytics_data_tool
+    url: http://elementarydata.cloud.looker.com/dashboards/thelook::web_analytics_data_tool
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: lookml_dashboards__web_analytics_thelook__web_analytics
+    meta:
+      platform: Looker
+      path: LookML Dashboards
+    label: Web Analytics_thelook::web_analytics
+    url: http://elementarydata.cloud.looker.com/dashboards/thelook::web_analytics
+    type: dashboard
+    owner:
+      name: Noy Arie account
+      email: '@noy arie account.com'
+  - name: users__or_avidov__events_per_city_4
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+    label: Events per city_4
+    url: http://elementarydata.cloud.looker.com/dashboards/4
+    type: dashboard
+    owner:
+      name: Or Avidov
+      email: '@noy arie account.com'
+  - name: users__or_avidov__nested__double_nested__folder_dashboard_5
+    meta:
+      platform: Looker
+      path: Users/Or Avidov/Nested/Double Nested
+    label: Folder Dashboard_5
+    url: http://elementarydata.cloud.looker.com/dashboards/5
+    type: dashboard
+    owner:
+      name: Or Avidov
+      email: '@noy arie account.com'
+  - name: users__or_avidov__new_dashboard_with_look_3
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+    label: New dashboard with look_3
+    url: http://elementarydata.cloud.looker.com/dashboards/3
+    type: dashboard
+    owner:
+      name: Or Avidov
+      email: '@noy arie account.com'
+  - name: users__or_avidov__sales_by_month_1
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+    label: Sales by month_1
+    url: http://elementarydata.cloud.looker.com/dashboards/1
+    type: dashboard
+    owner:
+      name: Or Avidov
+      email: '@noy arie account.com'
+  - name: users__or_avidov__testdashboard_2
+    meta:
+      platform: Looker
+      path: Users/Or Avidov
+    label: TestDashboard_2
+    url: http://elementarydata.cloud.looker.com/dashboards/2
+    type: dashboard
+    owner:
+      name: Or Avidov
+      email: '@noy arie account.com'
