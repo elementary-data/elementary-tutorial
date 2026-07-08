@@ -1,0 +1,25 @@
+name: Elementary Data Quality Review
+
+on:
+  pull_request:
+    paths:
+      - "dbt/elementary_analytics/models/**/*.sql"
+      - "dbt/elementary_analytics/models/**/*.yml"
+      - "dbt/elementary_analytics/dbt_project.yml"
+
+jobs:
+  elementary-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: elementary-data/elementary-ci@v1
+        with:
+          elementary-api-key: ${{ secrets.ELEMENTARY_API_KEY }}
+          elementary-api-url: "https://dev.api.elementary-data.com"
