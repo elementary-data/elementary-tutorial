@@ -3,9 +3,9 @@ name: Elementary Data Quality Review
 on:
   pull_request:
     paths:
-      - "dbt/elementary_analytics/models/**/*.sql"
-      - "dbt/elementary_analytics/models/**/*.yml"
-      - "dbt/elementary_analytics/dbt_project.yml"
+      - "models/**/*.sql"
+      - "models/**/*.yml"
+      - "dbt_project.yml"
 
 jobs:
   elementary-review:
