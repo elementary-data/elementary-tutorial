@@ -67,6 +67,12 @@ models:
       - name: gift_card_amount
         description: Amount of the order (AUD) paid for by gift card
 
+    tests:
+      - elementary.schema_changes:
+          config:
+            severity: error
+          meta:
+            description: Checks for schema changes against an existing baseline
   - name: returned_orders
     description: This table contains all of the returned orders
     config:
